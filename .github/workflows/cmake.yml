@@ -20,29 +20,22 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Create cmake-build-debug
-      # Use a bash shell so we can use the same syntax for environment variable
-      # access regardless of the host operating system
-      working-directory: first
-      shell: bash
-      run: mkdir cmake-build-debug && pwd && ls
-
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       working-directory: first
       shell: bash
-      run: cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ./ && ls -altr
+      run: cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ./
 
     - name: Build
       working-directory: first
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build ./cmake-build-debug --target CxxMPI_University_Tasks -- -j 6
+      run: cmake --build ./ --target CxxMPI_University_Tasks -- -j 6
 
     - name: Run
       shell: bash
-      working-directory: first/cmake-build-debug
+      working-directory: first
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: mpirun -np 4 ./CxxMPI_University_Tasks
