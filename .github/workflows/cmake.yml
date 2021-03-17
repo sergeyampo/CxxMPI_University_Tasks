@@ -25,7 +25,7 @@ jobs:
       # access regardless of the host operating system
       working-directory: first
       shell: bash
-      run: cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" && ls -altr
+      run: mkdir cmake-build-debug && cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" ./cmake-build-debug
 
     - name: Build
       working-directory: first
