@@ -57,7 +57,7 @@ class BinaryRoutes {
 	  std::cout << "(" << q.top().from << ";" << q.top().to << ")" << ' ';
 	  q.pop();
 	}
-	std::cout << '\n';
+	std::cout << std::endl;
   }
 
   Route top() {
