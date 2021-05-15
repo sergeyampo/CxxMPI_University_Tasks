@@ -58,14 +58,17 @@ bool is_vector_correct(const vector<string>& vec, const MPI_State& state) {
 
 int main(int argc, char* argv[]) {
   MPI_Init(&argc, &argv);
+  const int M = 1;
   auto state = initial_state();
   //Each word should be equal size
-  vector<string> vec = {"zer", "fir", "sec", "thi"};
+  vector<string> vec = {"zero|", "firs|", "seco|", "thir|"};
   if (!is_vector_correct(vec, state)) {
 	cout << "Input data is incorrect!" << "\n";
 	return 1;
   }
-  star(vec, state);
+  for(int i = 0; i < M; ++i) {
+	star(vec, state);
+  }
 
   MPI_Finalize();
 
